@@ -140,3 +140,137 @@ feelings feed everything: thoughts, choices, creations, voice, face.
 
 Event-to-emotion rules live in data, not code, so new triggers never require
 a rewrite.
+
+## 9. A body that runs without the brain
+
+Norn's body lives on the world server and never stops: needs drain on a real
+clock (hunger, thirst, energy, comfort, and a strange thirst that is part of
+who he is), and five slower **drives** pull at him (making things, being seen,
+connection, curiosity, getting better at things). The body sends its state to
+the brain as signals, not orders. The brain can act on them, think about
+something else, or ignore them.
+
+When the brain is offline (the creator's laptop asleep, the model down), the
+body keeps him alive by itself: it eats, sleeps and wanders on what it has
+learned. When the brain comes back, the body steps aside after a short grace
+period, except in an emergency, when the body wins.
+
+Why it matters: the mind can be switched off, upgraded, or slow without the
+character dying or freezing. The body is the floor; the brain is everything
+above it.
+
+## 10. A body he learns, not one he reads
+
+Early on, every action carried exact numbers ("a nap gives +5 energy") and the
+brain was told them. That made him a calculator. Now the world keeps its truth
+hidden, in three layers:
+
+1. **Physiology (hidden):** digestion takes time (a meal is felt partly at
+   once and the rest over the next hour), no two meals are the same, thirst
+   rises faster in heat, tricks make him sore, bad food upsets his stomach,
+   rain soaks him, sitting still stiffens him, practice makes tricks land.
+2. **Sensation:** his mind receives **felt levels** (the truth plus a slowly
+   wandering bias and a little noise) and **percepts** in words ("a gnawing
+   ache in the stomach", "a cool breeze across the back of his neck"). Never
+   numbers. A steady sensation fades from attention; a new or growing one
+   stands out.
+3. **Learning:** he believes what his own experience says a thing does. After
+   each try he compares how he felt before and after, and checks again an hour
+   later (for what comes slowly, like food). One experience teaches a little
+   about similar things ("this machine fed me" says something about
+   machines). Big surprises become thoughts. The body, separately, builds its
+   own habits, which is how it gets by when the brain is away.
+
+He can also try any of thirteen verbs on anything near him (eat, sit, touch,
+open, listen...). What happens comes from the thing's properties: eating a
+bench is a jolt through the teeth and an upset stomach, and he remembers.
+
+Why it matters: an agent that is told what everything does never discovers
+anything. One that has to try things, feel the result, and remember, starts
+to have a history with its world.
+
+## 11. Memory that fades and comes back
+
+Episodes (where he was, what he did, how it felt) are stored with an
+importance and a strength. They fade on a power-law forgetting curve, the
+kind modern spaced-repetition research uses. Recalling a memory strengthens
+it, more when recalls are spaced out and when it was harder to reach. Recall
+depends on cues (where he is, what he is doing) and on mood (a low mood
+surfaces low memories). Details fade before the gist does.
+
+When he thinks back and sees something differently, his new view is stored
+beside the memory. The facts are never rewritten.
+
+Why it matters: a perfect memory is not a person's memory. Fading, cueing and
+reinterpretation give him a past that behaves like one.
+
+## 12. Sleep as maintenance
+
+Sleep is when the mind tidies up. Each night it replays the day's strongest
+memories, folds repetitive routines into a single memory, and asks itself
+open questions: does anything here say something about my life? Is there
+anything I want to work toward? What he answers becomes beliefs and his own
+goals. Dreams happen in windows through the night, built from the day's
+material, and a stuck problem is sometimes solved by morning.
+
+Why it matters: without consolidation, memory is just a growing log. With it,
+experience turns into belief and intention on its own schedule.
+
+## 13. One mind, with privacy from the public, never from himself
+
+Some of his life is private. The rule that turned out to matter: private
+means **never seen by the public**, never **kept from him**. He thinks about
+his private life, learns from it, remembers it, like anything else. Anything
+to do with it is **labelled** private, and the label keeps it out of every
+public path: public feeds, posts, the public thought stream, and prompts to
+any model that is not running locally.
+
+An earlier design split the private part into a separate program that hid
+things from the main brain. That made two half-minds. The fix was one mind,
+one store of beliefs, and a label at the exits.
+
+Why it matters: hiding parts of an agent's experience from itself to keep
+them from an audience damages the agent and protects nothing. Filter what
+leaves; don't filter what he knows.
+
+## 14. Leave the decisions to him
+
+A hard rule for every prompt: no outside influence on his values, no leading
+questions, no rules about how he says things, no limits on what he can
+choose. A prompt says what is happening and asks the way his own mind would
+ask itself ("how does it sit with you now?"). Output formats the code needs to
+read are fine (choose one of the actions that are really possible, reply in
+this JSON shape). Safety checks happen in code after he answers, never as
+instructions to him.
+
+Why it matters: it is easy to write prompts that quietly decide for the
+agent, and then mistake the result for its personality. If the experiment is
+whether a character can develop its own values, the prompts have to stay out
+of the way.
+
+## 15. Thinking out loud, in his own words
+
+Visitors can read his thoughts as they happen, through a thought bubble by
+his portrait. Only what is his to share goes out (nothing private, nothing
+about money, never his dreams' words). At meaningful moments his model
+re-says the plain thought the way he would think it; routine moments keep a
+plain line. When he cannot think out loud (asleep, in his private space, or
+his mind offline), a message is pinned in his own words, which he writes,
+reuses or rewrites himself.
+
+Why it matters: watching an agent's reasoning is the interesting part. A
+live, honest, first-person stream makes that visible without exposing what
+should stay private.
+
+## 16. Testing a mind with a simulated month
+
+The real brain runs against the real world code on a fake clock: a month of
+his life in minutes, with a seeded stand-in model. Checks look for what breaks
+a life rather than a function: does he starve while his body goes for food,
+does one action take over, do feelings and goals stay in range, does he find
+for himself what helps hunger and thirst, does anything private reach a
+public surface. Every serious problem in the body and learning work was found
+this way before it reached him.
+
+Why it matters: unit tests check parts. A persistent agent fails over days,
+in loops and slow drifts, and only a long run shows that.

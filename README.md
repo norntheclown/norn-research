@@ -15,7 +15,11 @@ patterns, the interface contracts, and the detailed build notes.
 
 - `docs/architecture.md`: the reusable design patterns. Identity separate from
   the model. Worlds plugging in through two functions. A thought loop that
-  checks itself. Content as data, not code.
+  checks itself. Content as data, not code. A body that runs without the
+  brain, and a body he learns rather than reads. Memory that fades and comes
+  back. Sleep as maintenance. One mind, with privacy from the public, never
+  from himself. Leaving the decisions to him. Thinking out loud in his own
+  words. Testing a mind with a simulated month.
 - `docs/world-adapter.md`: the `observe()` / `act()` contract. Any world
   implements these two functions and the brain never contains world-specific
   code.
