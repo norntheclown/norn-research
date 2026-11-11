@@ -1,8 +1,9 @@
 # Norn architecture: reusable patterns
 
 These are the design patterns behind Norn the Clown, an autonomous AI agent
-with a persistent identity. Each pattern is in production in the live town at
-https://norntheclown.com. None of them are clown specific. They are written
+with a persistent identity. Patterns 1 to 16 and 19 to 23 are in production
+in the live town at https://norntheclown.com; 17 is a running experiment,
+and 18 and 24 are designs not yet built (each says so). None of them are clown specific. They are written
 here so another builder can lift them whole.
 
 ## 1. Identity is separate from the brain
@@ -274,3 +275,174 @@ this way before it reached him.
 
 Why it matters: unit tests check parts. A persistent agent fails over days,
 in loops and slow drifts, and only a long run shows that.
+
+Two lessons from moving him to a much bigger town. First, any change sends
+a seeded month down a different path, so one seed proves little: compare
+several seeds against the previous version before tuning anything (the old
+version fails some seeds too). Second, numbers tuned for one world can be
+wrong in another: the cost the body puts on walking was set when everything
+was a few dozen metres away; on the island, food is a few minutes' walk, and
+a hungry afternoon sometimes scored the trip as not worth it. The month
+showed it as idle hunger, the refusal log showed where, and a lower walking
+cost fixed it on every seed. A body that keeps trying something the world
+refuses is also caught this way: one did, over a hundred thousand times.
+
+## 17. A brain made of small nodes (experiment: the cat)
+
+Status: a running experiment, in a simulated town, not yet in the live one.
+
+A town cat gets a brain built a different way from Norn's, on purpose. It is
+a network of small nodes, each with one job (a need, a sense, a place, a
+want, a movement). Nodes only message their neighbours, each runs on its own
+jittered rhythm, messages take their own time to arrive, and nothing is
+seeded: two cats from the same start grow different wiring. A separate
+process grows and prunes the network: links that keep firing together
+before relief get stronger, a path used again and again grows a shortcut,
+a node holding too much splits, unused links fade and are pruned in sleep.
+
+Version 2 learns from surprise, and only what was firing at that moment is
+credited or blamed. It learns what each action leads to and what eases each
+need, by checking each guess against what happened, so it can unlearn too.
+On top of that: stamina that weighs an action against its cost, strain and
+pain (a little meowing is free; thousands in a row start to hurt), losses
+weighing twice as much as gains, urgency (past a threshold, hunger and
+thirst override almost everything, then calm down once eased), and a
+temperament drawn at birth (bold, energetic, curious, social) that sets the
+knobs it already had.
+
+Results so far: every version 2 cat now survives a simulated month, but the
+simpler version 1 still eats more and stays warmer, so version 1 stays in
+use. Temperament shows clearly: after a dog chases them in an alley, bold
+cats go back within a day or two and their wariness fades, while skittish
+ones stay away for days or go back still wary.
+
+Why it matters: it tests whether behaviour nobody designed can grow from
+simple local rules (the Game of Life idea), and every failure it shows (a
+cat stuck meowing, a cat that unlearns food while starving) names
+something a living system needs.
+
+## 18. A mind of many small parts, with the language model as its language centre
+
+Status: designed, not built.
+
+The problem it answers: a language model only knows who he is if it is told
+each time. Brains do not work like that. The design is a web of small parts
+in areas (body, senses, memory, feelings, wants, choosing), running all the
+time and rewiring with his life. Most choices are made by small decision
+nodes, by weights, with no language model. When something needs thinking
+through, the areas send what they have to one meeting point, which writes
+the prompt: a background of who he is, plus what matters right now, more or
+less of it from moment to moment. The language model puts it into words and
+thinks it through, and the result flows back into the web. It is his
+language centre and holds general knowledge; it is not the whole mind.
+
+Why it matters: instead of bigger and bigger models holding everything, a
+mind can be many small linked parts with a language model where language is
+needed. It will be tested on a stand-in first, never on the live character.
+
+## 19. One world any mind can live in
+
+A mind only ever meets the world through its senses and its verbs. The
+world says what is here, what it is like, what state it is in and what just
+happened; a mind does one of a short list of verbs to a thing or a place,
+and the world works out what happens. Nothing in the world is written for
+one mind: no prompt text, no shortcut only one brain can use.
+
+Every place and thing has two layers, never mixed: **mechanics** (what is
+there, what it is like, what can be done, what that needs, costs and
+changes: data any mind can use) and **words** (descriptions, signs, books:
+text a mind with language reads, and one without it ignores). A rule of
+thumb: if removing all the text would stop something from working,
+mechanics are hiding in the words.
+
+Why it matters: the same town then serves the language-model character,
+the node-brained cat, and a future node-built character, and new minds can
+be tried in it without changing it.
+
+## 20. A world generated from one map
+
+The town is never hand-placed. One map file holds the island: shore,
+marsh, rivers, the land across the water, streets and paths, districts and
+places. A build step turns it into the layout the server and the 3D client
+both use: buildings, props, placed objects, the walking graph (checked to
+reach everything), and the walk area. A map page is drawn from the same
+file, so the map never drifts from the world.
+
+Changing the layout of a live world needs care. Each layout has a version;
+when it changes, the live state is migrated once (he wakes at home, loose
+things move onto paths, new buildings get their states, retired ones go).
+And on every load, anything left somewhere that no longer exists (a
+waypoint, a spot over the water) is moved to the nearest place he can
+stand.
+
+Why it matters: redesigning the world (here, from a small square to an
+island town) becomes editing one file, and the live character survives it.
+
+## 21. Where he stands, sits and lies
+
+An embodied agent should use things where they are. Early on he acted from
+the nearest point on his walking map, so "sitting on the cot" played in the
+air beside it. Now every usable thing says, in its own coordinates: where
+he stands to use it, where he sits or lies on it, which way he faces, and
+how high he is lifted (a mattress, a ledge). He walks to the standing spot,
+takes his place for the action, and steps back off it afterwards. An action
+from across town never teleports him onto a seat.
+
+Every placed thing also has a simple stand-in model at its true size (boxes,
+cylinders and balls in its own coordinates) until a real model replaces it,
+and every item he can own has one too. In his inventory an item is not
+drawn; set down, it stays exactly where he put it until he picks it up or
+throws it away. Putting down, picking up and throwing away are choices
+offered to his mind; the body's autopilot never makes them.
+
+Why it matters: the world, not the animation, decides where a body is. The
+same data serves the web town, the stand-ins, a later 3D engine, and a
+later physics body.
+
+## 22. One barrier, shared by everyone
+
+Nobody walks off the island: an invisible barrier keeps visitors and the
+character on land, a couple of metres short of the water, or on a walkable
+way (which is how docks and boardwalks reach out over it; a broken bridge
+is not walkable). The rule lives in one small file with no dependencies.
+The visitor's camera and the server use identical copies, and a test fails
+if they differ. Another test walks every waypoint and every step between
+them and checks each is somewhere a person can stand.
+
+Why it matters: when the client and server each have their own idea of
+where people can go, they drift apart. One rule, tested in both places,
+keeps them the same.
+
+## 23. The world's clock changes what things are
+
+Some things change with the time of day, and the world, not a mind,
+changes them. The fountain in the park is water by day and blood after
+dark: at dusk its state becomes blood whatever its valve, and at first
+light it goes back to dry or flowing. Actions are gated by state, so
+drinking blood is only possible at night, from the fountain, for free; it
+is no longer sold. Every mind finds this out the same way, by being there.
+
+Why it matters: a need tied to a place and a time of day shapes a day more
+than one tied to money, and it fits pattern 19: mechanics in the world,
+discovered through the senses.
+
+## 24. One body, simulated once, seen the same by everyone
+
+Status: designed, not built. A later goal.
+
+The plan for learned movement: a physics body, moved by a policy trained by
+imitating human motion capture, so he balances, stumbles and recovers, and
+his tiredness and soreness show in how he moves. For everyone to see the
+same character, there is one simulation, on the server. The world decides
+what he does; a motion process decides how, many times a second, and
+reports events back (arrived, sat down, fell: a fall becomes something his
+body feels). Every visitor receives the same small pose snapshots and draws
+them a fraction of a second behind, blending between them.
+
+Rejected: each browser simulating him from the same inputs. Physics comes
+out slightly differently on different machines, and within seconds every
+visitor would be watching a different character.
+
+Why it matters: a shared, persistent character needs one authoritative
+body. Clients render; they never decide.
+

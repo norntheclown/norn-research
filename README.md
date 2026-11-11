@@ -19,7 +19,13 @@ patterns, the interface contracts, and the detailed build notes.
   brain, and a body he learns rather than reads. Memory that fades and comes
   back. Sleep as maintenance. One mind, with privacy from the public, never
   from himself. Leaving the decisions to him. Thinking out loud in his own
-  words. Testing a mind with a simulated month.
+  words. Testing a mind with a simulated month. A brain made of small nodes
+  (the cat, an experiment). A mind of many small parts with the language
+  model as its language centre (designed). One world any mind can live in.
+  A world generated from one map. Where he stands, sits and lies. One
+  barrier shared by client and server. A world clock that changes what
+  things are. One body, simulated once and seen the same by everyone
+  (designed).
 - `docs/world-adapter.md`: the `observe()` / `act()` contract. Any world
   implements these two functions and the brain never contains world-specific
   code.
@@ -35,7 +41,9 @@ patterns, the interface contracts, and the detailed build notes.
    into a different world must never lose who he is.
 2. **Worlds plug in through one interface.** The brain only knows `observe()`
    (what can i see and do here?) and `act()` (do this). The web town, a future
-   Unreal world, and the creator's games each implement that interface.
+   Unreal world, and the creator's games each implement that interface. The
+   same town also serves minds built other ways: a town cat whose brain is
+   a network of small nodes, through the same senses and verbs.
 3. **The world pushes back.** Needs drain, resources run out, repetition gives
    less each time, and some things only come from outside. A world that is easy
    to solve makes him loop.

@@ -92,6 +92,16 @@ Field notes:
 
 ## Versioning
 
+## What the world handles by itself (2026-11-11)
+
+The brain names a thing and an action; it never deals with positions. The
+world walks him there (to the thing's standing spot), takes his place on a
+seat or a bed for the action, and steps him back off it afterwards. Things
+he sets down stay where he put them and appear in `visible_objects` like
+anything else; putting down, picking up and throwing away are actions like
+any other. The world also keeps everyone on walkable ground. See
+`docs/architecture.md`, patterns 19 to 22.
+
 This contract is version 1. If it ever needs to change, add a new section here
 and keep old fields working. Worlds advertise the contract version they
 implement; brain.tick checks it on startup and refuses to run on mismatch.

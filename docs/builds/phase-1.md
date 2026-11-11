@@ -27,7 +27,7 @@ Pushed 2026-10-31 in three commits on main:
 - Verified live 2026-10-31: norntheclown.com serves, /api/state ticking, Norn walking main street.
 
 ## Open items
-- Barricade 1 unlock is undecided: the roadmap says it opens when the first second-block building unlocks; buildings.json says 250 followers. Needs Angela's call.
+- Barricade 1 unlock is undecided: the roadmap says it opens when the first second-block building unlocks; buildings.json says 250 followers. Needs the creator's call. (Later moot: the barricades were removed.)
 - `library_key` is referenced but not placed yet (deliberate, tracked as a future clue).
 - `tomato`/`radish` exist as both plant and item IDs; the engine must namespace per file.
 - Still unwritten per the content drop README: preset_messages.json, tip_actions.json, sounds/fx mappings.
